@@ -1,10 +1,78 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Calculator Application</title>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+    <title>Calculator</title>
 </head>
 <body>
-<h3 th:text="'Calculator Web Page'">Calculator Test Web Page</h3>
+<div id='calc-contain'>
+    <div id="calc-display">
+        <form method="GET" th:action="@{/}">
+            <!--/*@thymesVar id="displayString" type="io.github.slawomirr.calculator.controllers.CalculatorController"*/-->
+            <input title="display" type="text" name="answer" id="answer" disabled th:value="${displayString}"/>
+        </form>
+    </div>
+
+    <div id="calc-1-row">
+        <form method="POST" th:action="@{/addNumber/1}">
+            <button type="submit" name="number" value="1" class="calc-button">1</button>
+        </form>
+        <form method="POST" th:action="@{/addNumber/2}">
+            <button type="submit" name="number" value="2" class="calc-button">2</button>
+        </form>
+        <form method="POST" th:action="@{/addNumber/3}">
+            <button type="submit" name="number" value="3" class="calc-button">3</button>
+        </form>
+        <form data-th-method="PUT" th:action="@{/addOperation/divide}">
+            <button type="submit" name="operation" value="divide" class="calc-button">/</button>
+        </form>
+    </div>
+
+    <div id="calc-2-row">
+        <form method="POST" th:action="@{/addNumber/4}">
+            <button type="submit" name="number" value="4" class="calc-button">4</button>
+        </form>
+        <form method="POST" th:action="@{/addNumber/5}">
+            <button type="submit" name="number" value="5" class="calc-button">5</button>
+        </form>
+        <form method="POST" th:action="@{/addNumber/6}">
+            <button type="submit" name="number" value="6" class="calc-button">6</button>
+        </form>
+        <form data-th-method="PUT" th:action="@{/addOperation/multiply}">
+            <button type="submit" name="operation" value="multiply" class="calc-button">*</button>
+        </form>
+    </div>
+
+    <div id="calc-3-row">
+        <form method="POST" th:action="@{/addNumber/7}">
+            <button type="submit" name="number" value="7" class="calc-button">7</button>
+        </form>
+        <form method="POST" th:action="@{/addNumber/8}">
+            <button type="submit" name="number" value="8" class="calc-button">8</button>
+        </form>
+        <form method="POST" th:action="@{/addNumber/9}">
+            <button type="submit" name="number" value="9" class="calc-button">9</button>
+        </form>
+        <form data-th-method="PUT" th:action="@{/addOperation/minus}">
+            <button type="submit" name="operation" value="minus" class="calc-button">-</button>
+        </form>
+    </div>
+
+    <div id="calc-4-row">
+        <form data-th-method="DELETE" th:action="@{/clearDisplay}">
+            <button type="submit" name="display" class="calc-button">C</button>
+        </form>
+        <form method="POST" th:action="@{/addNumber/0}">
+            <button type="submit" name="number" value="0" class="calc-button">0</button>
+        </form>
+        <form method="GET" th:action="@{/result}">
+            <button type="submit" name="operation" value="=" class="calc-button">=</button>
+        </form>
+        <form data-th-method="PUT" th:action="@{/addOperation/plus}">
+            <button type="submit" name="operation" value="plus" class="calc-button">+</button>
+        </form>
+    </div>
+</div>
 </body>
 </html>

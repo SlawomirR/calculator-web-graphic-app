@@ -3,6 +3,7 @@ package io.github.slawomirr.calculator.controllers;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
@@ -11,15 +12,17 @@ public class CalculatorController {
     private static final Logger LOG = LoggerFactory.getLogger(CalculatorController.class);
 
     @GetMapping(value = {"/", "/index", "/index.html"})
-    public String index() {
+    public String index(Model model) {
         LOG.debug("HTTP.GET - index()");
+        model.addAttribute("displayString", "4 + 3");
 
         return "index";
     }
 
     @GetMapping("/result")
-    public String result() {
+    public String result(Model model) {
         LOG.debug("HTTP.GET - result()");
+        model.addAttribute("displayString", "7");
 
         return "index";
     }
